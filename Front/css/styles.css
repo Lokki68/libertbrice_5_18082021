@@ -1,0 +1,84 @@
+body {
+  height: 100%;
+  background: linear-gradient(350deg, rgba(144,91,249,.50) 24%, rgba(243,233,241,1) 100%);
+}
+
+a {
+  text-decoration: none; 
+  color: black; 
+}
+
+/* header */
+
+.nav-bar {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  margin-top: 15px;
+  background-color: #f3e9f1;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Merienda';
+  font-weight: 600;
+  color: black 
+}
+
+.logo{
+  margin-left: 5px;
+  font-weight: 700;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.panier {
+  margin-right: 5px;
+}
+
+.panier img {
+  width: 20px;
+}
+
+/* header end */
+
+/* cards */
+
+.cards {
+  width: 350px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+
+.card-img img {
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid black;
+  box-shadow: 5px 5px 8px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+}
+
+.card-description {
+  font-family: "Merienda", sans-serif;
+}
+
+.btn {
+  border-radius: 15px;
+  padding: 5px;
+  background-color: rgba(144, 91, 249, .50);
+}
+
+/* Footer */
+
+.social {
+  display: flex;
+  margin-top: 100px;
+  padding-top : 20px;
+  justify-content:space-around;
+  border-top: 1px solid black;
+}
