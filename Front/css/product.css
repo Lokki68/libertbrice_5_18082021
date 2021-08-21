@@ -27,6 +27,7 @@
 
 .card_product-description {
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .prix {
@@ -48,9 +49,11 @@
   display: none;
 }
 
-.notification-active {
+.active {
   display: block;
   margin-top: 10px;
+  text-align: center;
+  font-size: 10px;
 }
 
 /* Bouton de choix */
@@ -59,6 +62,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 20px;
+  margin-bottom: 20px;
   justify-content: space-between;
 }
 

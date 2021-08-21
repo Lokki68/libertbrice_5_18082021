@@ -33,6 +33,18 @@ fetch(urlTeddy)
           document.querySelector('#select_color').innerHTML += `<option value="${data.colors[i]}">${data.colors[i]}</option>`
         }
         
+        let cart = []
+        cart = [data.name, price]
+        console.log(cart)
+        document.querySelector('validate').addEventListener('click',function(){
+          localStorage.setItem('Nom',data.name)
+          localStorage.setItem('Price', price)
+        })
+
       })
   )
   .catch((error) => console.log('erreur : ' + error));
+
+  document.querySelector('.validate').addEventListener('click',function(){
+    document.querySelector('.notification').classList.toggle('active')
+  })
