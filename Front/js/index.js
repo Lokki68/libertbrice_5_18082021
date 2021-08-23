@@ -20,7 +20,7 @@ fetch(urlTeddy)
             <h3>${teddie.name}</h3>
           </div>
           <div class="description-discovert">
-          <button  class="btn"><a href="produit.html?id=${teddie._id}">Découvre moi</a></button>
+          <a href="produit.html?id=${teddie._id}"><button  class="btn">Découvre moi</button></a>
           </div>
         </div>
         </div>

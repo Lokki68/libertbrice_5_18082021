@@ -1,5 +1,4 @@
 body {
-  height: 100%;
   background: linear-gradient(
     350deg,
     rgba(144, 91, 249, 0.5) 24%,
@@ -8,8 +7,7 @@ body {
 }
 
 a {
-  text-decoration: none;
-  color: black;
+  cursor: pointer;
 }
 
 /* header */
@@ -31,6 +29,7 @@ a {
 
 .logo {
   margin-left: 5px;
+  font-size: 25px;
   font-weight: 700;
 }
 
@@ -43,7 +42,7 @@ a {
 }
 
 .panier img {
-  width: 20px;
+  width: 30px;
 }
 
 /* header end */
@@ -81,6 +80,13 @@ a {
   border-radius: 15px;
   padding: 5px;
   background-color: rgba(144, 91, 249, 0.5);
+  cursor: pointer;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 5px 5px 15px 5px #f3e9f1;
+  box-shadow: 5px 5px 15px 5px #f3e9f1;
+  color: #f3e9f1;
 }
 
 /* Footer */
@@ -88,7 +94,8 @@ a {
 .social {
   display: flex;
   margin-top: 100px;
-  padding-top: 20px;
+  margin-bottom: 50px;
+  padding-top: 30px;
   justify-content: space-around;
   border-top: 1px solid black;
 }

@@ -42,12 +42,12 @@ fetch(urlTeddy)
 
         document.querySelector('.validate').addEventListener('click',function(){
           localStorage.setItem('addCart', cart)
+          alert(`${data.name} est dans votre panier`)
+          document.documentElement.scrollTop=0
         })
 
       })
   )
   .catch((error) => console.log('erreur : ' + error));
 
-  document.querySelector('.validate').addEventListener('click',function(){
-    document.querySelector('.notification').classList.toggle('active')
-  })
+  
