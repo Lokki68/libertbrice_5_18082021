@@ -53,3 +53,17 @@ fetch(urlTeddy)
 
     })
     .catch((error)=> console.log('erreur :' + error)))
+
+
+    const validEmail = function (inputEmail) {
+  // Création de la RegExp pour validation Email
+  let emailRegExp = new RegExp(
+    "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",
+    "g"
+  )};
+
+    document.querySelector('#firstName').addEventListener('change',function (){
+      var firstName = this.value
+    })
+
+    console.log(firstName)
