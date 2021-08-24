@@ -1,15 +1,19 @@
+// Récupération de l'url pour la demande sur le backend
 const urlTeddy = 'http://localhost:3000/api/teddies'
 
+// Demande des informations au backend
 fetch(urlTeddy)
   .then(response =>
     response.json()
       .then(data => {
 
+        // Affichage du retour du backend dans la console (pour vérification)
         console.log(data)
         
+        // Affichage de tous les oursons
         data.forEach(teddie => {
 
-
+          // Récupération de l'id = presentations pour affichage sur la page html des oursons
       document.querySelector('#presentations').innerHTML += `
       <div class="cards"> 
       <div class="card-img">

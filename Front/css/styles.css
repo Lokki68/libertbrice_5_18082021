@@ -88,6 +88,7 @@ a {
   box-shadow: 5px 5px 15px 5px #f3e9f1;
   color: #f3e9f1;
 }
+/* card end */
 
 /* Footer */
 
@@ -99,3 +100,10 @@ a {
   justify-content: space-around;
   border-top: 1px solid black;
 }
+/* Footer end */
+/* Panier */
+
+.badge {
+  cursor: pointer;
+}
+/* Panier end */
