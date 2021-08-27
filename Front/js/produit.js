@@ -15,6 +15,7 @@ fetch(urlTeddy)
     response.json()
       .then(data => {
         // Affichage des informations de l'ourson séléctionné par l'utilisateur dans la console (pour vérification)
+        console.log("Affichage de l'ourson choisi par l'utilisateur")
         console.log(data)
 
         // passage du prix en €
@@ -33,27 +34,48 @@ fetch(urlTeddy)
         
         // Affichage des selections de couleurs possible sur la page html
         for (let i = 0; i < data.colors.length; i++) {
-          console.log(data.colors[i])
           document.querySelector('#select_color').innerHTML += `<option value="${data.colors[i]}">${data.colors[i]}</option>`
         }
-        
-        // contenu du panier
-        let cart = data._id
-        
-        // Affichage du contenu du panier dans la console (pour vérification)
-        console.log(cart)
 
+        // Récupération des informations à rajouter dans le panier
 
-        // Ecoute du click sur le bouton valider pour rajout de l'ourson au panier
-        document.querySelector('.validate').addEventListener('click',function(){
-          // Ajout de l'ourson dans le localStorage
-          localStorage.setItem('addCart', cart)
-          // Affichage de l'ajout sous forme d'alert dans le navigateur
-          alert(`${data.name} est dans votre panier`)
-          // Scroll Up
-          document.documentElement.scrollTop=0
+        // Déclaration du tableau "oursons"
+        let oursons =[]
+
+        // Afficher le LocalStorage
+        let oldCart = JSON.parse(localStorage.getItem('teddie'))
+        console.log(oldCart)
+        //  vérifier si le localStorage est vide
+
+        // Au click sur le bouton validate
+        document.querySelector('.validate').addEventListener('click', function() {
+        if (oldCart == null) 
+        {
+          // Si il est vide
+                  //  Récupérer les informations de l'ourson affiché est le mettre dans un tableau oursons
+                  oursons.push(data)
+                  //  passer le tableau en JSON et le mettre dans le localStorage
+                  console.log("Affichage du tableau Oursons si pas d'ancien panier")
+                  console.table(oursons)
+                  localStorage.setItem('teddie', JSON.stringify(oursons))
+          }
+          else
+          {
+          //  Si il n'est pas vide
+                  //  rajouter les inforamtions de l'ancien panier au tableau oursons
+                  for (let i = 0 ; i < oldCart.length ; i++){
+                    oursons.push(oldCart[i])
+                  }
+                  //  Récupérer les informations de l'ourson affiché est le mettre dans un tableau oursons
+                  oursons.push(data)
+                  //  passer le tableau en JSON et le mettre dans le localStorage
+                  console.log("Affichage du tableau Oursons si présence d'un élément dans ancien panier")
+                  console.table(oursons)
+                  localStorage.setItem('teddie', JSON.stringify(oursons))
+         }     
+          alert(`${data.name} est rajouté au panier`)
+          document.documentElement.scrollTop = 0
         })
-
       })
   )
   .catch((error) => console.log('erreur : ' + error));

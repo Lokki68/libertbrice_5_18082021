@@ -1,8 +1,8 @@
 // Récupération de l'url pour la demande sur le backend
-const urlTeddy = 'http://localhost:3000/api/teddies'
+const urlTeddies = 'http://localhost:3000/api/teddies'
 
 // Demande des informations au backend
-fetch(urlTeddy)
+fetch(urlTeddies)
   .then(response =>
     response.json()
       .then(data => {
