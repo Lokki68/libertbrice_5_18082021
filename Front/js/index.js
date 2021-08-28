@@ -32,5 +32,7 @@ fetch(urlTeddies)
         })
       })
   )
-  .catch((error) => console.log('erreur : ' + error));
+  .catch((error) => 
+  alert('erreur : ' + error),
+  );
 

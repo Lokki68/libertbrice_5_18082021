@@ -16,26 +16,29 @@ fetch(urlTeddy)
       .then(data => {
         // Affichage des informations de l'ourson séléctionné par l'utilisateur dans la console (pour vérification)
         console.log("Affichage de l'ourson choisi par l'utilisateur")
-        console.log(data)
+        console.table(data)
 
         // passage du prix en €
         let price = data.price / 100
-
+        console.log("prix en € - " + price)  
+        
         // Insertion Name
       document.querySelector('.card_product-name').innerHTML = `<h3>${data.name}</h3> `  
-        
+        console.log("nom de l'ourson : " + data.name)
         // Insertion Photo  URL
         document.querySelector('.card_product-img').innerHTML = `<img src="${data.imageUrl}" alt= "Photo ${data.name}">`
-
+        console.log("url de l'image : " + data.imageUrl)
         // Insertion Description + Prix
         document.querySelector('.card_product-description').innerHTML = `
         <p>${data.description}</p>
         <p class="prix">${price} €</p>`
+        console.log("description de l'ourson : " + data.description)
         
         // Affichage des selections de couleurs possible sur la page html
         for (let i = 0; i < data.colors.length; i++) {
           document.querySelector('#select_color').innerHTML += `<option value="${data.colors[i]}">${data.colors[i]}</option>`
         }
+        console.table(data.colors)
 
         // Récupération des informations à rajouter dans le panier
 

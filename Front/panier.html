@@ -60,32 +60,30 @@
     <div class="container mt-3">
       <form action="" method="POST" id="loginForm">
           
-          <!-- firstName -->
+          <!-- lastName -->
           <div class="form-group">
-            <label for="firstName">Nom :</label>
-            <input type="text" class="form-control" name="firstName" />
+            <label for="lastName">Nom :</label>
+            <input type="text" class="form-control" name="lastName" />
             <small></small>
           </div>
           
-          <!-- lastName -->
+          <!-- firstName -->
           <div class="form-group">
-            <label for="lastName">Prénom :</label>
-            <input type="text" class="form-control" name="lastName" />
+            <label for="firstName">Prénom :</label>
+            <input type="text" class="form-control" name="firstName" />
             <small></small>
           </div>
           
           <!-- Address -->
           <div class="form-group">
             <label for="address">Adresse :</label>
-            <input type="text" class="form-control" name="address" />
-            <small></small>
+            <input type="text" class="form-control" name="address" required/>
           </div>
 
           <!-- City -->
           <div class="form-group">
             <label for="city">Ville :</label>
-            <input type="text" class="form-control" name="city" />
-            <small></small>
+            <input type="text" class="form-control" name="city" required/>
           </div>
           
           <!-- Email -->
@@ -97,7 +95,7 @@
 
           <!-- Bouton -->
           <div class="form-group mt-2">
-            <button type="submit" class="btn btn-secondary btn-block">
+            <button type="submit" class="btn btn-secondary btn-block send">
               Envoyer
             </button>
           </div>
