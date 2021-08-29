@@ -53,10 +53,9 @@ affichage += '</ul>'
 
 let form = document.querySelector('#loginForm')
   
-let commande =[]
+let contact
 
 // rajout du panier dans la commande
-commande.push(oursons)
 
 console.log(form)
   
@@ -70,6 +69,17 @@ form.lastName.addEventListener('change', function () {
 
 form.firstName.addEventListener('change', function () {
   validFirstName(this)
+
+})
+
+// Ecoute de la modification de l'address
+form.address.addEventListener('change', function (){
+  validAddress(this)
+})
+
+// Ecoute de la modification de City
+form.city.addEventListener('change', function () {
+  validCity(this)
 })
 
 // Ecoute de la modification de l'email
@@ -78,16 +88,30 @@ form.email.addEventListener('change', function (){
   validEmail(this)
 })
 
+
 // Ecoute de l'envois du formulaire
 
 document.querySelector('.send').addEventListener('click',function (e) {
   e.preventDefault()
-  if (validLastName(form.lastName) && validFirstName(form.firstName) && validEmail(form.email)) {
+  if (validLastName(form.lastName) && validFirstName(form.firstName) &&  validAddress(form.address) && validCity(form.city) &&validEmail(form.email)) {
 
-    // form.submit()
+    // Ajout des informations du contact dans l'object contact
+    contact = {
+      lastName : form.lastName.value,
+      firstName : form.firstName.value,
+      address : form.address.value,
+      city : form.city.value,
+      email : form.email.value,
+    }
+console.log(contact)
+
+    
+
+    
 
   }
 })
+
 
 // validation lastName
 const validLastName = function(inputLastName){
@@ -139,6 +163,65 @@ const validFirstName = function(inputFirstName){
   }
 }
 
+// validation Address
+const validAddress = function(inputAddress){
+  // création du test
+  var msg
+  var valid = false
+  if (inputAddress.value.length < 3) {
+    msg = "Veuillez saisir votre adresse"
+  }else{
+    msg = 'Adresse valide'
+    valid = true
+  }
+
+  // Récupération de la balise Small
+  let small = inputAddress.nextElementSibling
+
+  // Test de l'expression régulière
+  if (valid){
+    small.innerHTML = msg
+    small.classList.remove('text-danger')
+    small.classList.add("text-success")
+    return true
+  } else {
+    small.innerHTML = msg
+    small.classList.remove('text-success')
+    small.classList.add("text-danger")
+    return false
+  }
+}
+
+// validation city
+const validCity = function(inputCity){
+  // création du test
+  var msg
+  var valid = false
+  if (inputCity.value.length < 3) {
+    msg = "Veuillez saisir votre ville"
+  }else{
+    msg = 'Ville valide'
+    valid = true
+  }
+
+  // Récupération de la balise Small
+  let small = inputCity.nextElementSibling
+
+  // Test de l'expression régulière
+  if (valid){
+    small.innerHTML = msg
+    small.classList.remove('text-danger')
+    small.classList.add("text-success")
+    return true
+  } else {
+    small.innerHTML = msg
+    small.classList.remove('text-success')
+    small.classList.add("text-danger")
+    return false
+  }
+}
+
+//  Validation de l'adresse mail
 const validEmail = function (inputEmail) {
   // Création de la RegExp pour validation Email
   let emailRegExp = new RegExp(
@@ -163,4 +246,3 @@ const validEmail = function (inputEmail) {
   }
 };
 
-console.table(commande)
