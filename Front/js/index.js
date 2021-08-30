@@ -33,6 +33,10 @@ fetch(urlTeddies)
       })
   )
   .catch((error) => 
-  alert('erreur : ' + error),
+  document.querySelector('#notification').innerHTML = `
+  <div class="alert alert-danger mt-3" role="alert">
+          ${error}
+        </div>
+  `
   );
 
