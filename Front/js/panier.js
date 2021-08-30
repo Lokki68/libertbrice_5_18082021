@@ -89,7 +89,8 @@ form.email.addEventListener('change', function (){
 })
 
 
-// Ecoute de l'envois du formulaire
+
+// Ecoute du bouton envois
 
 document.querySelector('.send').addEventListener('click',function (e) {
   e.preventDefault()
@@ -103,12 +104,8 @@ document.querySelector('.send').addEventListener('click',function (e) {
       city : form.city.value,
       email : form.email.value,
     }
-console.log(contact)
 
-    
-
-    
-
+    localStorage.setItem('contact', JSON.stringify(contact))
   }
 })
 

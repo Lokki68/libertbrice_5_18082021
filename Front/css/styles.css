@@ -47,6 +47,21 @@ a {
 
 /* header end */
 
+/* Notification */
+#notification {
+  background-color: rgb(238, 173, 173);
+  margin: 20px 50px;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); 
+}
+
+.notification_alert {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px 0;
+}
+
 /* cards */
 #presentations {
   display: flex;
