@@ -10,22 +10,26 @@ if (products !== null){
 for (let product of products){
 
 // passage du prix en €
-let price = (product.price/100) * product.quantity 
 
-console.log(price)
-console.log(product.name)
+let nb = parseInt(product.quantité)
+
+let priceTotal = product.prix * nb;
+
+console.log(priceTotal)
+
+console.log(product.nom_ourson)
 // Récupération des informations à afficher dans le panier
 affichage += `<li class='list-group-item d-flex justify-content-between align-item '> 
 <div class='ms-2 me-auto'>
-<div class='fw-bold'>${product.name}</div>
-${price} - €
+<div class='fw-bold'>${product.nom_ourson}</div>
+${priceTotal} - €
 </div>
-<div>${product.quantity}</div>
-<span></span>
+<div>${product.quantité} </div>
+<span><i class="far fa-trash-alt"></i></span>
 </li>`     
 }
 
-affichage += '</ul>'
+affichage += `</>`
 
   document.querySelector('#paniers').innerHTML = affichage 
   document.querySelector('#paniers').innerHTML += ` 

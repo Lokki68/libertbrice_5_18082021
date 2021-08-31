@@ -42,13 +42,27 @@ fetch(urlTeddy)
         }
         console.table(data.colors)
 
+        // récuperation de la quantité
+        let quantity = 1
+
+        // récuperation de la couleurs choisi
+
+        let colors = document.querySelector('#select_color').value
+
         // Récupération des informations à rajouter dans le panier
+
+        let product = {
+          id_ourson: data._id,
+          nom_ourson: data.name,
+          prix : price,
+          couleur : colors,
+          quantité : quantity,
+        }
 
         // Déclaration du tableau "oursons"
         let products = []
 
-        let quantity = document.querySelector('#nombre').value
-        console.log(quantity)
+       
         // Afficher le LocalStorage
         let oldCart = JSON.parse(localStorage.getItem('teddie'))
         console.log(oldCart)
@@ -59,11 +73,9 @@ fetch(urlTeddy)
         if (oldCart == null) 
         {
           // Si il est vide
-                  // Récupération du nombre d'ourson souhaité
-                  let quantity = document.querySelector('#nombre').value
                   //  Récupérer les informations de l'ourson affiché est le mettre dans un tableau products
                   
-                  products.push(data)
+                  products.push(product)
                   
 
                   //  passer le tableau en JSON et le mettre dans le localStorage
@@ -79,7 +91,7 @@ fetch(urlTeddy)
                     products.push(oldCart[i])
                   }
                   //  Récupérer les informations de l'ourson affiché est le mettre dans un tableau oursons
-                  products.push(data)
+                  products.push(product)
                   //  passer le tableau en JSON et le mettre dans le localStorage
                   console.log("Affichage du tableau Oursons si présence d'un élément dans ancien panier")
                   console.table(products)
