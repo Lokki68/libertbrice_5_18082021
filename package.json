@@ -1,1 +1,24 @@
-{}
+{
+  "name": "libertbrice_5_18082021",
+  "description": "libertbrice_5_18082021",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lokki68/libertbrice_5_18082021.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lokki68/libertbrice_5_18082021/issues"
+  },
+  "homepage": "https://github.com/Lokki68/libertbrice_5_18082021#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "prettier": "^2.3.2"
+  }
+}

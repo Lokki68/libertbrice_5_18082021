@@ -1,25 +1,26 @@
 // Récupération du LocalStorage
-let oursons = JSON.parse(localStorage.getItem('teddie'));
+let products = JSON.parse(localStorage.getItem('teddie'));
 
 
-console.table(oursons)
+console.table(products)
 
 let affichage = "<ul class='list-group'>"
 
-if (oursons !== null){
-for (let ourson of oursons){
+if (products !== null){
+for (let product of products){
 
 // passage du prix en €
-let price = ourson.price/100 
+let price = (product.price/100) * product.quantity 
 
 console.log(price)
-console.log(ourson.name)
+console.log(product.name)
 // Récupération des informations à afficher dans le panier
 affichage += `<li class='list-group-item d-flex justify-content-between align-item '> 
 <div class='ms-2 me-auto'>
-<div class='fw-bold'>${ourson.name}</div>
+<div class='fw-bold'>${product.name}</div>
 ${price} - €
 </div>
+<div>${product.quantity}</div>
 <span></span>
 </li>`     
 }
@@ -107,6 +108,7 @@ document.querySelector('.send').addEventListener('click',function (e) {
 
     localStorage.setItem('contact', JSON.stringify(contact))
   }
+  
 })
 
 
