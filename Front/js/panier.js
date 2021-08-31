@@ -105,7 +105,7 @@ document.querySelector('.send').addEventListener('click',function (e) {
       city : form.city.value,
       email : form.email.value,
     }
-
+    // Ajout de "Contact" dans le localStorage
     localStorage.setItem('contact', JSON.stringify(contact))
   }
   
