@@ -1,9 +1,6 @@
 // Récupération du LocalStorage
 let products = JSON.parse(localStorage.getItem('teddie'));
 
-
-console.table(products)
-
 let affichage = "<ul class='list-group'>"
 
 if (products !== null){
@@ -15,17 +12,16 @@ let nb = parseInt(product.quantité)
 
 let priceTotal = product.prix * nb;
 
-console.log(priceTotal)
-
-console.log(product.nom_ourson)
 // Récupération des informations à afficher dans le panier
 affichage += `<li class='list-group-item d-flex justify-content-between align-item '> 
 <div class='ms-2 me-auto'>
 <div class='fw-bold'>${product.nom_ourson}</div>
 ${priceTotal} - €
 </div>
-<div>${product.quantité} </div>
+<div class="detail">
+<div>qte - ${product.quantité} </div>
 <span><i class="far fa-trash-alt"></i></span>
+</div>S
 </li>`     
 }
 
@@ -61,23 +57,21 @@ let form = document.querySelector('#loginForm')
 let contact
 
 // rajout du panier dans la commande
-
-console.log(form)
   
-// Ecouter la modification de lastName
+// Écouter la modification de lastName
 
 form.lastName.addEventListener('change', function () {
   validLastName(this)
 })
 
-// Ecoute de la modification de firstName
+// Écoute de la modification de firstName
 
 form.firstName.addEventListener('change', function () {
   validFirstName(this)
 
 })
 
-// Ecoute de la modification de l'address
+// Écoute de la modification de l'address
 form.address.addEventListener('change', function (){
   validAddress(this)
 })
@@ -95,7 +89,7 @@ form.email.addEventListener('change', function (){
 
 
 
-// Ecoute du bouton envois
+// Écoute du bouton envois
 
 document.querySelector('.send').addEventListener('click',function (e) {
   e.preventDefault()
@@ -112,7 +106,7 @@ document.querySelector('.send').addEventListener('click',function (e) {
     // Ajout de "Contact" dans le localStorage
     localStorage.setItem('contact', JSON.stringify(contact))
   }
-  
+  href.location
 })
 
 

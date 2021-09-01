@@ -1,15 +1,12 @@
 // Récupération de l'url pour la demande sur le backend
-const urlTeddies = 'http://localhost:3000/api/teddies'
+const urlTeddies = 'http://localhost:3000/api/teddies';
 
 // Demande des informations au backend
 fetch(urlTeddies)
   .then(response =>
-    response.json()
+    response.json();
       .then(data => {
 
-        // Affichage du retour du backend dans la console (pour vérification)
-        console.log(data)
-        
         // Affichage de tous les oursons
         data.forEach(teddie => {
 
@@ -29,8 +26,8 @@ fetch(urlTeddies)
         </div>
         </div>
       `  
-        })
-      })
+        });
+      });
   )
   .catch((error) => 
   document.querySelector('#notification').innerHTML = `

@@ -121,4 +121,9 @@ a {
 .badge {
   cursor: pointer;
 }
+
+.detail {
+  display:flex;
+  flex-direction: column
+}
 /* Panier end */
