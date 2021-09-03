@@ -119,7 +119,7 @@ form.email.addEventListener('change', function (){
 const validLastName = function(inputLastName){
   // création de la RegExp pour validation LastName
   let lastNameRegExp = new RegExp(
-    "^[A-Z]+[a-z]{2,18}$",
+    "^[A-Z a-z]{2,18}$",
     "g"
   )
 
