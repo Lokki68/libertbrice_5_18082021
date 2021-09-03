@@ -66,15 +66,22 @@
       <select id="select_color">
     
       </select>
-      <form class="form">
-        <label for="nombre">Nb :</label>
-        <input type="number" id="nombre"  required min="1" max="10" size="10" value="1" disabled>
-      </form>
+      <div class="option_nombre">
+        <label for="select_number"> Nombre : </label>
+        <select id="select_number">
+          <option value="1">1 seul</option>
+          <option value="2">à 2 c'est mieux</option>
+          <option value="3">3 pourquoi pas</option>
+        </select>
       
       <div class="bouton">
         
-        <a href="index.html"><button class="btn cancel" data-id="test" type="submit">J'en veux un autre</button></a>
-        <button class="btn validate" data-id="test" type="submit">C'est toi que je veux</button>
+        <a href="index.html">
+            <button class="btn cancel" data-id="test" type="submit">J'en veux un autre</button>
+        </a>
+        
+        <button class="btn" id="validate" type="submit">C'est toi que je veux</button>
+
       </div>
       
     </div>

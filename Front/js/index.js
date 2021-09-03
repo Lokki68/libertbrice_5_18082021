@@ -4,7 +4,7 @@ const urlTeddies = 'http://localhost:3000/api/teddies';
 // Demande des informations au backend
 fetch(urlTeddies)
   .then(response =>
-    response.json();
+    response.json()
       .then(data => {
 
         // Affichage de tous les oursons
@@ -27,7 +27,7 @@ fetch(urlTeddies)
         </div>
       `  
         });
-      });
+      })
   )
   .catch((error) => 
   document.querySelector('#notification').innerHTML = `
