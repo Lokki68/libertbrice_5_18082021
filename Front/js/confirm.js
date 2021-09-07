@@ -46,16 +46,19 @@ console.log(orderId)
 let affichage = `
     <div class="alert alert-success mt-5" role="alert">
         <h4 class="alert-heading">Confirmation d'achat</h4>
-        <p>M/Mme <strong>${contact.lastName} ${contact.firstName}</strong>, nous vous confirmons bonne réception de votre achat pour un montant de <strong>88 €</strong></p>
+        <p>M/Mme <strong>${contact.lastName} ${contact.firstName}</strong>, 
+        <br>nous vous confirmons bonne réception de votre achat 
+        <br>pour un montant de <strong>${sumPriceEuro}</strong></p>
         <hr>
-        <p class="mb-0">Voici votre identifiant de commande : <strong>${orderId}</strong>  <br>
-        Conservez-le pour toute demande concernant votre achat</p>
+        <p class="mb-0">Voici votre identifiant de commande : 
+        <br><strong>${orderId}</strong>
+        <br>Conservez-le pour toute demande concernant votre achat</p>
     </div>
 `
 
 document.querySelector('#confirmation').innerHTML = affichage
 
-document.querySelector('.validate').addEventListener('click', function (){
+document.querySelector('.validate').addEventListener('click', () => {
     localStorage.clear()
     location.href = 'index.html'
 })

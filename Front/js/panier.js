@@ -10,18 +10,13 @@ let products = []
 if (oursons !== null){
 for (let ourson of oursons){
   
-
-  // passage du prix en €
-
-let nb = parseInt(ourson.quantité)
-
-let priceTotal = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(ourson.prix);
+  console.log(ourson)
 
 // Récupération des informations à afficher dans le panier
 affichage += `<li class='list-group-item d-flex justify-content-between align-item '> 
 <div class='ms-2 me-auto'>
 <div class='fw-bold'>${ourson.nom_ourson}</div>
-${priceTotal}
+${ourson.prix}
 </div>
 <div class="detail">
 <div>qte - ${ourson.quantité} </div>
@@ -37,21 +32,29 @@ ${priceTotal}
   let totalPrice = []
 
   oursons.forEach(ourson => {
-    totalPrice.push(ourson.prix)
+    totalPrice.push(parseInt(ourson.prix))
   })
 
+  console.log(totalPrice)
+
   let sumPrice = 0
-  for (let i = 0; i < totalPrice.length; i++){
-    sumPrice += totalPrice[i]
+
+  if (totalPrice.length > 1) {
+    for (let i = 0; i < totalPrice.length; i++){
+      sumPrice += totalPrice[i]
+    }
+  } else {
+    sumPrice = totalPrice
   }
 
+  console.log(sumPrice)
   let sumPriceEuro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(sumPrice)
 
   console.log(sumPriceEuro)
 
   affichage += `
   <div class="alert alert-primary mt-1" role="alert">
-  <i class="fas fa-check-circle"></i> Votre total s\'élève à <strong>${sumPriceEuro}</strong> 
+  <i class="fas fa-check-circle"></i> Votre panier s\'élève à <strong>${sumPriceEuro}</strong> 
   </div></>`
 
   document.querySelector('#paniers').innerHTML = affichage 

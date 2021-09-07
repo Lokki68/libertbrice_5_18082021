@@ -14,7 +14,7 @@ fetch(urlTeddy)
           console.log(data);
 
         // passage du prix en €
-        let price = data.price / 100;
+        let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(data.price / 100);
         
         // Insertion Name
         document.querySelector('.card_product-name').innerHTML = `<h3>${data.name}</h3> `;  
@@ -25,7 +25,7 @@ fetch(urlTeddy)
         // Insertion Description + Prix
         document.querySelector('.card_product-description').innerHTML = `
           <p>${data.description}</p>
-          <p class="prix">${price} €</p>`;
+          <p class="prix">${price}</p>`;
         
         // Affichage des selections de couleurs possible sur la page html
         for (let i = 0; i < data.colors.length; i++) {
@@ -49,7 +49,7 @@ fetch(urlTeddy)
         let oldCart = JSON.parse(localStorage.getItem('teddy'));
         //  vérifier si le localStorage est vide
         // Au click sur le bouton validate
-        document.querySelector('#validate').addEventListener('click', function() {
+        document.querySelector('#validate').addEventListener('click', () => {
 
             console.log(oldCart); 
 
