@@ -1,7 +1,11 @@
 // Récupération de l'_id de l'ourson dans l'URL
 let params = new URL(document.location).searchParams;
 let id = params.get("id");
+  console.log(id);
 
+if (id === null) {
+  location.href = 'index.html';
+}
 
 let urlTeddy = `http://localhost:3000/api/teddies/${id}`;
 // Affichage de l'urlTeddy pour la demande au backend dans la console (pour vérification)
