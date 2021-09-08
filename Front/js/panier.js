@@ -1,91 +1,110 @@
+// Déclaration des constantes
+  const oursons = JSON.parse(localStorage.getItem('teddy'));
+
 // Récupération du LocalStorage
-let oursons = JSON.parse(localStorage.getItem('teddy'));
+main()
 
-let affichage = "<ul class='list-group'>"
+async function main() {
 
-console.log(oursons)
+  displayCart(oursons);
 
-let products = []
-
-if (oursons !== null){
-for (let ourson of oursons){
-  
-  console.log(ourson)
-
-// Récupération des informations à afficher dans le panier
-affichage += `<li class='list-group-item d-flex justify-content-between align-item '> 
-<div class='ms-2 me-auto'>
-<div class='fw-bold'>${ourson.nom_ourson}</div>
-${ourson.prix}
-</div>
-<div class="detail">
-<div>qte - ${ourson.quantité} </div>
-<span><i class="far fa-trash-alt"></i></span>
-</div>
-</li>`     
 }
 
+function displayCart(oursons){
+  let affichage = "<ul class='list-group'>"
 
+    console.log(oursons)
 
-  // Récupération de la somme total + affichage
+  let products = []
 
-  let totalPrice = []
+  if (oursons !== null){
 
+    for (let ourson of oursons){
+  
+      console.log(ourson)
+      
+      let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(ourson.prix / 100)
+
+      // Récupération des informations à afficher dans le panier
+      affichage += `
+      <li class='list-group-item d-flex justify-content-between align-item '> 
+        <div class='ms-2 me-auto'>
+            <div class='fw-bold'>
+              ${ourson.nom_ourson}
+            </div>
+            ${price}
+          </div>
+        <div class="detail">
+          <div>
+            qte - ${ourson.quantité} 
+          </div>
+          <span>
+            <i class="far fa-trash-alt"></i>
+          </span>
+        </div>
+      </li>`     
+      }
+
+      // Récupération de la somme total + affichage
+
+let totalPrice = []
   oursons.forEach(ourson => {
     totalPrice.push(parseInt(ourson.prix))
   })
-
   console.log(totalPrice)
 
   let sumPrice = 0
 
   if (totalPrice.length > 1) {
     for (let i = 0; i < totalPrice.length; i++){
-      sumPrice += totalPrice[i]
+      sumPrice += totalPrice[i] / 100
     }
-  } else {
-    sumPrice = totalPrice
+  } 
+  else 
+  {
+  sumPrice = totalPrice / 100
   }
 
   console.log(sumPrice)
-  let sumPriceEuro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(sumPrice)
+let sumPriceEuro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(sumPrice)
 
   console.log(sumPriceEuro)
 
-  affichage += `
+affichage += `
   <div class="alert alert-primary mt-1" role="alert">
-  <i class="fas fa-check-circle"></i> Votre panier s\'élève à <strong>${sumPriceEuro}</strong> 
-  </div></>`
+    <i class="fas fa-check-circle"></i> Votre panier s\'élève à <strong>${sumPriceEuro}</strong> 
+  </div>`
 
-  document.querySelector('#paniers').innerHTML = affichage 
-  document.querySelector('#paniers').innerHTML += ` 
-  <div class="d-grid mt-3 col-6 mx-auto">
-  <button class="btn btn-danger clear" > Vider le panier </button>
-  </div>
-  `       
-      document.querySelector('.clear').addEventListener('click', () => {
-        localStorage.removeItem('teddy')
-        location.reload()
-      })
+document.querySelector('#paniers').innerHTML = affichage 
+document.querySelector('#paniers').innerHTML += ` 
+<div class="d-grid mt-3 col-6 mx-auto">
+  <button class="btn btn-danger clear" > 
+    Vider le panier 
+  </button>
+</div>
+`       
+document.querySelector('.clear').addEventListener('click', () => {
+  localStorage.removeItem('teddy')
+  location.reload()
+})
 
-  }else{
+  }
+  else
+  {
     //  Vérification si le panier est vide (affiche une alerte en cas de panier vide)
-        document.querySelector('#paniers').innerHTML = `
-        <div class="alert alert-danger mt-3" role="alert">
-          Votre panier est vide !
-        </div>
-        `
-      }
+      document.querySelector('#paniers').innerHTML = `
+      <div class="alert alert-danger mt-3" role="alert">
+        Votre panier est vide !
+      </div>
+      `
+  }
 
-    // })
-    // .catch((error)=> console.log('erreur :' + error)))
+}
 
 // Validation formulaire
 
-let form = document.querySelector('#loginForm')
-  
-
-  
+const form = document.querySelector('#loginForm')
+    
 // Écouter la modification de lastName
 
 form.lastName.addEventListener('change', function () {
