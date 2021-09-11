@@ -13,6 +13,8 @@ async function main() {
   cartNumber()
 }
 
+// Afficher le nombre d'article dans le panier
+
 function cartNumber() {
 
   let contentCart = JSON.parse(localStorage.getItem('teddy'))
@@ -28,6 +30,8 @@ function cartNumber() {
     
     }
 }
+
+// Récupère la base de données du backend
 
 function getTeddies() {
   return fetch(urlTeddies)
@@ -45,6 +49,7 @@ function getTeddies() {
   })
 }
 
+// Affiche les produit sur la page
 
 function displayTeddies(teddy) {
   document.querySelector('#presentations').innerHTML += `

@@ -4,11 +4,6 @@ const params = new URL(document.location).searchParams;
 const id = params.get("id");
 const urlTeddy = `http://localhost:3000/api/teddies/${id}`;
 
-
-
-
-console.log(id);
-
 main()
 
 async function main() {
@@ -19,24 +14,22 @@ async function main() {
   cartNumber()
 }
 
+// Afficher le nombre d'article dans le panier
 
 function cartNumber() {
 
-   let contentCart = JSON.parse(localStorage.getItem('teddy'))
+  let contentCart = JSON.parse(localStorage.getItem('teddy'))
 
-
-   console.table(contentCart);
-
-  
-
-  if (contentCart !== null){
-    nb = contentCart.length;
-    document.querySelector('.badge').innerHTML += `${nb}`;
-} else {
-  document.querySelector('.badge').innerHTML += 0;
+    if (contentCart !== null){
+      nb = contentCart.length;
+      document.querySelector('.badge').innerHTML += `${nb}`;
+    } else {
+      document.querySelector('.badge').innerHTML += 0;
+    }
 }
-}
+
 // Récupération de l'ourson choisi par l'utilisateur
+
 function getTeddy() {
   return fetch(urlTeddy)
   .then((response) => {
@@ -54,29 +47,31 @@ function getTeddy() {
 }
 
 // Affichage de l'ourson choisi par l'utilisateur
+
 function displayTeddy(teddy) {
 
   // passage du prix en €
-   let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(teddy.price / 100);
+  let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(teddy.price / 100);
   
   // Insertion Name
-  document.querySelector('.card_product-name').innerHTML = `<h3>${teddy.name}</h3> `;  
+    document.querySelector('.card_product-name').innerHTML = `<h3>${teddy.name}</h3> `;  
 
-  // Insertion Photo  URL
-  document.querySelector('.card_product-img').innerHTML = `<img src="${teddy.imageUrl}" alt= "Photo ${teddy.name}">`;
+    // Insertion Photo  URL
+    document.querySelector('.card_product-img').innerHTML = `<img src="${teddy.imageUrl}" alt= "Photo ${teddy.name}">`;
 
-  // Insertion Description + Prix
-  document.querySelector('.card_product-description').innerHTML = `
-    <p>${teddy.description}</p>
-    <p class="prix">${price}</p>`;
-  
-  // Affichage des selections de couleurs possible sur la page html
+    // Insertion Description + Prix
+    document.querySelector('.card_product-description').innerHTML = `
+      <p>${teddy.description}</p>
+      <p class="prix">${price}</p>`;
+    
+    // Affichage des selections de couleurs possible sur la page html
   for (let i = 0; i < teddy.colors.length; i++) {
     document.querySelector('#select_color').innerHTML += `<option value="${teddy.colors[i]}">${teddy.colors[i]}</option>`;
   }
 }
 
- function addCart(teddy){
+function addCart(teddy){
+
   let ourson = {
     id: teddy._id,
     nom_ourson: teddy.name,
@@ -91,9 +86,9 @@ function displayTeddy(teddy) {
 
       //  vérifier si le localStorage est vide
       // Au click sur le bouton validate
-  document.querySelector('#validate').addEventListener('click', () => {
+    document.querySelector('#validate').addEventListener('click', () => {
 
-    let oldCart = JSON.parse(localStorage.getItem('teddy'))
+  let oldCart = JSON.parse(localStorage.getItem('teddy'))
     if (oldCart == null){
       
 
