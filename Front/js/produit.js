@@ -2,7 +2,10 @@
 
 const params = new URL(document.location).searchParams;
 const id = params.get("id");
-const urlTeddy = `http://localhost:3000/api/teddies/${id}`
+const urlTeddy = `http://localhost:3000/api/teddies/${id}`;
+
+
+
 
 console.log(id);
 
@@ -13,10 +16,26 @@ async function main() {
 
   displayTeddy(teddy);
   addCart(teddy);
-
+  cartNumber()
 }
 
 
+function cartNumber() {
+
+   let contentCart = JSON.parse(localStorage.getItem('teddy'))
+
+
+   console.table(contentCart);
+
+  
+
+  if (contentCart !== null){
+    nb = contentCart.length;
+    document.querySelector('.badge').innerHTML += `${nb}`;
+} else {
+  document.querySelector('.badge').innerHTML += 0;
+}
+}
 // Récupération de l'ourson choisi par l'utilisateur
 function getTeddy() {
   return fetch(urlTeddy)
@@ -65,18 +84,19 @@ function displayTeddy(teddy) {
     couleur : teddy.colors, // Valeurs par default pour le MVP
     quantité : 1, // Valeurs par default pour le MVP
   };
+    
 
-      // Déclaration du tableau "oursons"
-  let oursons = [];
+  let oursons = []
 
-      
-      // Afficher le LocalStorage
-  let oldCart = JSON.parse(localStorage.getItem('teddy'));
+
       //  vérifier si le localStorage est vide
       // Au click sur le bouton validate
   document.querySelector('#validate').addEventListener('click', () => {
 
+    let oldCart = JSON.parse(localStorage.getItem('teddy'))
     if (oldCart == null){
+      
+
       // Si il est vide
         //  Récupérer les informations de l'ourson affiché est le mettre dans un tableau oursons
         oursons.push(ourson);
@@ -98,12 +118,12 @@ function displayTeddy(teddy) {
       //  passer le tableau en JSON et le mettre dans le localStorage
       
     }
+
+    localStorage.setItem('teddy', JSON.stringify(oursons));
+    document.documentElement.scrollTop = 0;
     
-    if (window.confirm(`Vous avez choisi ${teddy.name} \n Voulez confirmer ce choix`)) {
-        localStorage.setItem('teddy', JSON.stringify(oursons));
-        document.documentElement.scrollTop = 0;
-      }else{
-        location.href = 'index.html';
-      }
+      location.reload()
   });
 }
+
+
