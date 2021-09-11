@@ -17,17 +17,16 @@ function cartNumber() {
 
   let contentCart = JSON.parse(localStorage.getItem('teddy'))
 
-
-  console.table(contentCart);
-
- 
-
- if (contentCart !== null){
-   nb = contentCart.length;
-   document.querySelector('.badge').innerHTML += `${nb}`;
-} else {
- document.querySelector('.badge').innerHTML += 0;
-}
+    if (contentCart !== null){
+    
+      nb = contentCart.length;
+      document.querySelector('.badge').innerHTML += `${nb}`;
+    
+    } else {
+    
+      document.querySelector('.badge').innerHTML += 0;
+    
+    }
 }
 
 function getTeddies() {
