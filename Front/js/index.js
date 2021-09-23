@@ -10,25 +10,6 @@ async function main() {
   Teddies.forEach(teddy => {
     displayTeddies(teddy)
   })
-  cartNumber()
-}
-
-// Afficher le nombre d'article dans le panier
-
-function cartNumber() {
-
-  let contentCart = JSON.parse(localStorage.getItem('teddy'))
-
-    if (contentCart !== null){
-    
-      nb = contentCart.length;
-      document.querySelector('.badge').innerHTML += `${nb}`;
-    
-    } else {
-    
-      document.querySelector('.badge').innerHTML += 0;
-    
-    }
 }
 
 // Récupère la base de données du backend
